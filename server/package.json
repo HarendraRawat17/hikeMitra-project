@@ -1,0 +1,20 @@
+{
+  "name": "hk-server",
+  "version": "1.0.0",
+  "description": "'crud hk project",
+  "license": "ISC",
+  "author": "HRawat",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config --experimental-json-modules ./src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "nodemailer": "^8.0.5",
+    "nodemon": "^3.1.14"
+  }
+}
