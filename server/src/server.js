@@ -1,7 +1,5 @@
 import dotenv from "dotenv";
-import express, { urlencoded } from "express"; 
-import cors from "cors" ;
-import cookieParser from "cookie-parser";
+import { app } from "./app.js";
 import connectDB from "./Database/index.js";    
 
 
@@ -10,17 +8,12 @@ dotenv.config()
 
 
 connectDB()
+.then(() => {
+  app.listen(process.env.PORT || 8000, () => {
+    console.log(`Server is connected at port: ${process.env.PORT}`)
+  })
+})
+.catch((err) => {
+  console.log(`MongoDB connection failed!!`, err)
+})
 
-const app = express();
-
-app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-  credentials: true
-}));
-
-app.use(express.json({limit: "15kb"}));
-app.use(express.urlencoded({extended: true, limit: "15kb"}));
-app.use(express.static("public")) // general config to store pdf, img files locally in server
-app.use(cookieParser());
- 
-export {app};
